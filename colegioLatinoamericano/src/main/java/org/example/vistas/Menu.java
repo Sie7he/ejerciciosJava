@@ -5,10 +5,6 @@ import org.example.modelos.Alumno;
 import org.example.modelos.Materia;
 import org.example.servicios.AlumnoServicio;
 import org.example.servicios.ArchivoServicio;
-import org.example.servicios.PromedioServicioImp;
-
-import java.io.FileWriter;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +17,9 @@ public class Menu extends MenuTemplate {
     Util util = new Util();
 
     public Menu() {
+
         this.alumnoServicio = new AlumnoServicio();
+        this.archivoServicio = new ArchivoServicio();
     }
 
     @Override

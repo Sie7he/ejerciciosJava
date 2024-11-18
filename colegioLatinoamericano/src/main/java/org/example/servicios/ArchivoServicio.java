@@ -5,21 +5,14 @@ import org.example.modelos.Materia;
 
 import java.io.FileWriter;
 import java.io.PrintWriter;
-import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 public class ArchivoServicio {
 
-    private List<Alumno> alumnosACargar;
-    private PromedioServicioImp promedioServicioImp;
+    private final PromedioServicioImp promedioServicioImp = new PromedioServicioImp();
 
     public ArchivoServicio(){}
 
-    public ArchivoServicio(List<Alumno> alumnosACargar, PromedioServicioImp promedioServicioImp) {
-        this.alumnosACargar = alumnosACargar;
-        this.promedioServicioImp = promedioServicioImp;
-    }
 
     public void exportarDatos(Map<String, Alumno> alumnoMap, String path) {
 
@@ -36,12 +29,13 @@ public class ArchivoServicio {
                 pw.print("Apellido: ");
                 pw.println(entry.getValue().getApellido());
                 pw.print("Dirección: ");
-                pw.println(entry.getValue().getDireccion());
-                pw.println("Asignaturas");
+                pw.println(entry.getValue().getDireccion());;
                 if(entry.getValue().getMateriaList() != null){
+                    pw.println("Asignaturas");
                     for(Materia materia: entry.getValue().getMateriaList()) {
                         pw.println(". "+ materia.getNombre());
                         if(materia.getNotas() != null) {
+                            System.out.println(materia.getNotas());
                             pw.print("Promedio: ");
                             pw.println(promedioServicioImp.calcularPromedio(materia.getNotas()));
                         }
